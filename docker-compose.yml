@@ -1,0 +1,20 @@
+version: '3.8'
+# services는 각 컨테이너 서비스를 정의하는 섹션입니다.
+services:
+  # crawler라는 이름의 서비스를 정의합니다.
+  crawler:
+    # 현재 디렉토리에 있는 Dockerfile을 기반으로 이미지를 빌드합니다.
+    # `.`은 Dockerfile이 있는 디렉토리를 나타냅니다.
+    build: .
+
+    # stdin_open과 tty 설정을 통해 컨테이너와 터미널의 상호작용을 활성화합니다.
+    # 이는 대화형 프로그램을 실행하거나 디버깅할 때 유용합니다.
+    stdin_open: true  # 표준 입력을 열어둡니다.
+    tty: true         # 컨테이너에 가상 터미널을 활성화합니다.
+    command: tail -f /dev/null  # 컨테이너가 종료되지 않고 대기 상태로 유지
+
+    # volumes는 호스트 시스템과 컨테이너 간에 파일을 공유할 디렉토리를 설정합니다.
+    # 여기서는 호스트의 ./output 디렉토리를 컨테이너의 /app/output 디렉토리와 연결하여,
+    # 컨테이너에서 생성한 결과 파일을 호스트 시스템에서도 확인할 수 있습니다.
+    volumes:
+      - ./output:/app/output  # 호스트의 ./output을 컨테이너의 /app/output에 연결합니다.
