@@ -10,9 +10,10 @@ Python + Selenium 기반으로 번개장터 상품을 자동 크롤링하고, �
 - Chrome (버전 호환되는 ChromeDriver)
 - Docker & Docker Compose (선택)
 
-```bash
+bash
 pip install -r requirements.txt
 
+##
 ## ⚙️ 로컬 실행
 
 1️⃣ 크롤링
